@@ -1,0 +1,16 @@
+version: '3'
+services:
+  pokedex-app:
+    image: pokedex-app
+    ports:
+      - '8080:8080' # Map the host port to container port
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:latest
+    ports:
+      - '5432:5432' # Map the host port to container port
+    environment:
+      POSTGRES_USER: pokedex
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: pokedex_db
