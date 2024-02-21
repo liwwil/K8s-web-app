@@ -16,7 +16,6 @@ spec:
       - name: pokedex-app
         image: pokedex-app:v1
         ports:
-        - containerPort: 8080
         - containerPort: 30000
         imagePullPolicy: Never # we have to set this to "Never" otherwise k8s will keep pulling image from network instead of local
 ---

@@ -1,0 +1,93 @@
+# values.yaml for Pokedex application on Minikube using Helm
+
+# Application image configuration
+image:
+  # Replace with your actual docker image registry and repository
+  repository: pokedex-app
+  tag: v1
+
+# Postgres configuration
+postgres:
+  # Replace with your desired username and password
+  username: liwwil
+  password: password
+  database: pokedex
+
+# Service port configuration
+service:
+#
+# Type queries into this side of the screen, and you will see intelligent
+# typeaheads aware of the current GraphQL type schema and live syntax and
+# validation errors highlighted within the text.
+#
+# GraphQL queries typically start with a "{" character. Lines that start
+# with a # are ignored.
+#
+# An example GraphQL query might look like:
+#
+#     {
+#       field(arg: "value") {
+#         subField
+#       }
+#     }
+#
+# Keyboard shortcuts:
+#
+#   Prettify query:  Shift-Ctrl-P (or press the prettify button)
+#
+#  Merge fragments:  Shift-Ctrl-M (or press the merge button)
+#
+#        Run Query:  Ctrl-Enter (or press the play button)
+#
+#    Auto Complete:  Ctrl-Space (or just start typing)
+#
+
+
+
+  nodePort: 30200
+  port: 30000
+  protocol: TCP
+  targetPort: 30000
+  type: NodePort  # Or NodePort, LoadBalancer, etc.
+
+# Resource requests and limits (optional, customize as needed)
+resources:
+  requests:
+    cpu: 50m
+    memory: 128Mi
+  limits:
+    cpu: 100m
+    memory: 256Mi
+
+serviceAccount:
+  create: true  # Or false, depending on your preference
+
+autoscaling:
+  enabled: true  # Or false, depending on whether you want autoscaling
+  maxReplicas: 5  # Or any appropriate value
+
+  # ... other autoscaling-related values
+  
+
+# Environment variables (optional, add as needed)
+env:
+  # ...
+
+# Replica counts (optional, customize as needed)
+replicaCount:
+  pokedex: 1
+  postgres: 1
+
+# Ingress configuration (optional, if using Ingress)
+ingress:
+  enabled: false  # Set to true if enabled
+  hostname: pokedex.example.com  # Replace with your desired hostname
+  path: /  # Optional path within the domain
+
+# Persistence configuration (optional, if using persistent volumes)
+persistence:
+  enabled: false  # Set to true if enabled
+  # ...
+
+# Other Helm chart customizations (optional)
+# ...

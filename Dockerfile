@@ -1,8 +1,8 @@
-FROM golang:latest AS builder
+FROM golang:latest AS builder 
 
 WORKDIR /app
-COPY . .
-RUN cd pokedexTest; CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o pokedex-app .
+COPY ./pokedexTest /app/
+RUN CGO_ENABLED=0 GOOS=linux go build -o pokedex-app .
 
 FROM scratch
 
