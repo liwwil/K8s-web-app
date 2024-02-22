@@ -9,9 +9,9 @@ image:
 # Postgres configuration
 postgres:
   # Replace with your desired username and password
-  username: liwwil
-  password: password
-  database: pokedex
+  username: "${DATABASE_USERNAME}"
+  password: "${DATABASE_PASSWORD}"
+  database: "${DATABASE_NAME}"
 
 # Service port configuration
 service:
@@ -91,3 +91,4 @@ persistence:
 
 # Other Helm chart customizations (optional)
 # ...
+    
