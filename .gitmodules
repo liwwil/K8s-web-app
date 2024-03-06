@@ -1,0 +1,3 @@
+[submodule "pokedexTest"]
+	path = pokedexTest
+	url = https://github.com/liwwil/pokedexTest.git

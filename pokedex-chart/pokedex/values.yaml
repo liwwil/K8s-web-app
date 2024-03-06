@@ -1,0 +1,62 @@
+# values.yaml for Pokedex application on Minikube using Helm
+
+# Application image configuration
+image:
+  # Replace with your actual docker image registry and repository
+  repository: pokedex-app
+  tag: v1
+  imagePullPolicy: Never
+# Postgres configuration
+postgres:
+  # Replace with your desired username and password
+  username: "${DATABASE_USERNAME}"
+  password: "${DATABASE_PASSWORD}"
+  database: "${DATABASE_NAME}"
+
+# Service port configuration
+service:
+  nodePort: 30200
+  port: 30000
+  protocol: TCP
+  targetPort: 30000
+  type: NodePort  # Or NodePort, LoadBalancer, etc.
+
+# Resource requests and limits (optional, customize as needed)
+resources:
+  requests:
+    cpu: 50m
+    memory: 128Mi
+  limits:
+    cpu: 100m
+    memory: 256Mi
+
+serviceAccount:
+  create: false  # Or false, depending on your preference
+
+autoscaling:
+  enabled: true  # Or false, depending on whether you want autoscaling
+  minReplicas: 1
+  maxReplicas: 5  # Or any appropriate value
+
+  # ... other autoscaling-related values
+  
+
+# Environment variables (optional, add as needed)
+env:
+  # ...
+
+# Replica counts (optional, customize as needed)
+replicaCount:
+  pokedex: 1
+  postgres: 1
+
+# Ingress configuration (optional, if using Ingress)
+ingress:
+  enabled: false  # Set to true if enabled
+  hostname: pokedex.example.com  # Replace with your desired hostname
+  path: /  # Optional path within the domain
+
+# Persistence configuration (optional, if using persistent volumes)
+persistence:
+  enabled: false  # Set to true if enabled
+  # ...
